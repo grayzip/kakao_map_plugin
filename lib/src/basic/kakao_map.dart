@@ -100,6 +100,18 @@ class _KakaoMapState extends State<KakaoMap> {
     _mapController = KakaoMapController(controller);
   }
 
+  void clearCache() {
+    _mapController.webViewController
+      ..clearCache()
+      ..clearLocalStorage();
+  }
+
+  @override
+  void dispose() {
+    clearCache();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WebViewWidget(
